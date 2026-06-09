@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>היומן שלי</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Varela+Round&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+
+    <header class="masthead">
+      <div class="brand">
+        <span class="brand-mark">☕</span>
+        <h1>היומן שלי</h1>
+        <button id="monthBtn" class="month-btn">
+          <span class="month-btn-ico">📅</span> סקירת חודש
+        </button>
+      </div>
+      <div class="datebar">
+        <button id="prevDay" class="nav" aria-label="יום קודם">&rsaquo;</button>
+        <span id="dateLabel" class="date"></span>
+        <button id="nextDay" class="nav" aria-label="יום הבא">&lsaquo;</button>
+        <button id="todayBtn" class="today">היום</button>
+      </div>
+    </header>
+
+    <section class="block">
+      <h2 class="label">איך הרגשתי היום?</h2>
+      <div id="moodRow" class="mood-row"></div>
+    </section>
+
+    <section class="block">
+      <h2 class="label">משימות</h2>
+      <div class="add">
+        <input id="todoInput" type="text" dir="auto" placeholder="הוסיפו משימה ולחצו Enter">
+      </div>
+      <ul id="todoList" class="list"></ul>
+    </section>
+
+    <section class="block">
+      <h2 class="label">מה הלך טוב</h2>
+      <div class="add">
+        <input id="positiveInput" type="text" dir="auto" placeholder="משהו טוב שקרה היום">
+      </div>
+      <ul id="positiveList" class="list"></ul>
+    </section>
+
+    <section class="block">
+      <h2 class="label">מה לא הלך</h2>
+      <div class="add">
+        <input id="negativeInput" type="text" dir="auto" placeholder="משהו שלא הלך כשורה">
+      </div>
+      <ul id="negativeList" class="list"></ul>
+    </section>
+
+    <section class="block">
+      <h2 class="label">מה לשפר בפעם הבאה</h2>
+      <div class="add">
+        <input id="improveInput" type="text" dir="auto" placeholder="דבר אחד לעשות אחרת">
+      </div>
+      <ul id="improveList" class="list"></ul>
+    </section>
+
+    <section class="block">
+      <h2 class="label">תחביבים</h2>
+      <ul id="hobbyList" class="list hobbies"></ul>
+      <div class="add">
+        <input id="hobbyInput" type="text" dir="auto" placeholder="הוסיפו תחביב למעקב">
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Month mood overview -->
+  <div id="monthModal" class="modal" hidden>
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2>טבלת הרגשות החודשית</h2>
+        <button id="closeMonth" class="modal-close" aria-label="סגירה">&times;</button>
+      </div>
+      <div class="month-nav">
+        <button id="prevMonth" class="nav" aria-label="חודש קודם">&rsaquo;</button>
+        <span id="monthLabel" class="month-label"></span>
+        <button id="nextMonth" class="nav" aria-label="חודש הבא">&lsaquo;</button>
+      </div>
+      <div id="monthGrid" class="month-grid"></div>
+      <p class="month-hint">לחצו על יום כדי לפתוח אותו</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
