@@ -1,21 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: todo-app-deployment
-  labels:
+  name: todo-app-frontend-deployment
+  namespace: todo-app
+  labels: 
     app: todo-app
+    component: frontend
 spec:
-  replicas: 3
-  selector:
+  replicas: 1
+  selector: #search for pods with the same labels
     matchLabels:
       app: todo-app
+      component: frontend
   template:
     metadata:
-      labels:
+      labels: #the labels that we want to attach to the pods
         app: todo-app
+        component: frontend
     spec:
       containers:
-      - name: todo-app
-        image: 
-        ports:
-        - containerPort: 80
+        - name: todo-app-frontend
+          image: idanrachmany/todo-frontend:latest
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+          ports:
+            - containerPort: 80
