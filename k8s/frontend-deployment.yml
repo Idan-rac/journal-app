@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: todo-app-frontend
-          image: idanrachmany/todo-frontend:latest
+          image: idanrachmany/todo-frontend:latest 
           imagePullPolicy: Always
           resources:
             limits:
