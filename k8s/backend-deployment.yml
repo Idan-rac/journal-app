@@ -31,3 +31,12 @@ spec:
               cpu: "250m"
           ports:
             - containerPort: 8000
+          env:
+            - name: POSTGRES_DB
+              value: todoapp
+            - name: POSTGRES_USER
+              value: todouser
+            - name: POSTGRES_PASSWORD
+              value: todopassword
+            - name: DATABASE_URL #this is the environment variable that the backend application will use to connect to the database
+              value: postgresql://todouser:todopassword@todo-app-postgres-service:5432/todoapp
