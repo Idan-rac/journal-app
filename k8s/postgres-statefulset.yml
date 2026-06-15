@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres-statefulset
+  namespace: todo-app
+  labels:
+    app: todo-app
+    component: database
+spec:
+  serviceName: "headless-svc"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-app
+      component: database
+  template:
+    metadata:
+      labels:
+        app: todo-app
+        component: database
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:13
+        env:
+        - name: POSTGRES_DB
+          value: todoapp
+        - name: POSTGRES_USER
+          value: todouser
+        - name: POSTGRES_PASSWORD
+          value: todopassword
+        ports:
+        - containerPort: 5432
+          name: postgres
+        volumeMounts: #the path where the data will be stored in the container/pod
+        - name: postgres-data
+          mountPath: /var/lib/postgresql/data
+  volumeClaimTemplates: #this is where we define the PVC template for the StatefulSet
+  - metadata:
+      name: postgres-data
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 1Gi
